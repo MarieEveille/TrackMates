@@ -1,0 +1,15 @@
+[submodule "app_web_client"]
+	path = app_web_client
+	url = https://github.com/thomasGarau/app_web_client.git
+[submodule "app_web_serveur"]
+	path = app_web_serveur
+	url = https://github.com/thomasGarau/app_web_serveur.git
+[submodule "faker_alternance"]
+	path = faker_alternance
+	url = https://github.com/thomasGarau/faker_alternance.git
+[submodule "dataset_generator"]
+	path = dataset_generator
+	url = https://github.com/thomasGarau/dataset_generator.git
+[submodule "serveur_flask"]
+	path = serveur_flask
+	url = https://github.com/thomasGarau/serveur_flask.git
