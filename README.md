@@ -26,6 +26,21 @@
 ### **Serveur Node**
 - Installer les dépendances : ```npm install```
 - Lancer le serveur : ```npm start```
+- Instancier un fichier ```.env``` à la racine contenant les attributs suivants : 
+  - DB_HOST=
+  - DB_USER=
+  - DB_PASS=
+  - DB_PORT=
+  - DB_NAME=
+  - PORT=
+  - JWT_SECRET=
+  - MONGO_URI= //uri de la base non relationnel 
+  - Cloudinary_CLOUD_NAME= //service pour l'hebergement d'image
+  - Cloudinary_API_KEY=
+  - Cloudinary_API_SECRET=
+  - MAIL_KEY= //mail pour la reinitalisation de mot de passe
+  - EMAIL =
+  - FLASK_TOKEN= //token du serveur flask 
 ### **Serveur Flask**
 - Créer un environnement virtuel (optionnel, mais recommandé) :
 - python -m venv venv
@@ -34,5 +49,10 @@
   - Sur Linux/Mac : ```source venv/bin/activate```
 - Installer les dépendances : ```pip install -r requirements.txt```
   Lancer le serveur : ```flask run```
+- Instancier un fichier ```.env``` à la racine contenant les attributs suivants : 
+- API_TOKEN=
+###Bases de données :
+- Créer une base de données MySQL puis importer le fichier ```trackmates_db.sql``` à la récine du dépot
 
 ## Utilisation
+Le client tourne à l'adresse : ```http://localhost:3000```
