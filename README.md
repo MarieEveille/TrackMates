@@ -59,21 +59,21 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
   Lancer le serveur : ```flask run```
 - Instancier un fichier ```.env``` à la racine contenant les attributs suivants : 
   - API_TOKEN= //doit être identique à FLASK_TOKEN
-###Bases de données :
+### Bases de données :
 - Créer une base de données MySQL puis importer le fichier ```trackmates_db.sql``` à la récine du dépot
 - Créer une collection Interaction sur MongoDb 
 
 ## Utilisation
-Lancer le serveur Node, Le serveur Flask, le client React
-Le client tourne à l'adresse : ```http://localhost:3000```
-L'export de la bdd relationnel contient déjà un jeux de données avec : 
-utilisateur admin : 
-identifiant :
-mot de passe : Testtesttest1*
-utilisateur enseignant :
-identifiant :
-mot de passe : Testtesttest1*
-utilisateur étudiant : 
-identifiant : 
-mot de passe : Testtesttest1*
+- Lancer le serveur Node, Le serveur Flask, le client React
+- Le client tourne à l'adresse : ```http://localhost:3000```
+- L'export de la bdd relationnel contient déjà un jeux de données avec : 
+- utilisateur admin : 
+  - identifiant
+  - mot de passe : Testtesttest1*
+- utilisateur enseignant :
+  - identifiant :
+  - mot de passe : Testtesttest1*
+- utilisateur étudiant : 
+  - identifiant : 
+  - mot de passe : Testtesttest1*
 
