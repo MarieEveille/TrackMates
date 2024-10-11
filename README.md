@@ -1,6 +1,29 @@
 # Trackmates 
 
+## Table des matières
+- [Description](#description)
+- [Organisation](#organisation)
+- [Technologies](#technologies)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+  - [Client](#client)
+  - [Serveur Node](#serveur-node)
+  - [Serveur Flask](#serveur-flask)
+  - [Bases de données](#bases-de-données)
+- [Utilisation](#utilisation)
+
 ## Description 
+Trackmates est une application éducative innovante qui utilise les dernières avancées en sciences cognitives et en intelligence artificielle pour optimiser les méthodes d'apprentissage. Elle vise à transformer l'expérience éducative en proposant des outils adaptés aux besoins spécifiques de chaque utilisateur.
+
+L'application s'appuie sur trois valeurs fondamentales :
+
+- Briser la verticalité de l'enseignement : Trackmates cherche à dépasser le modèle traditionnel de transmission des connaissances de l'enseignant à l'étudiant. En tirant parti des innovations offertes par internet et les communautés de partage de savoir comme Wikipedia, Trackmates propose une approche collaborative et horizontale de l'apprentissage.
+
+- Proposer une diversité d'outils d'apprentissage : Chaque individu apprend de manière différente. En se basant sur des recherches scientifiques, Trackmates intègre une variété d'outils et de méthodes pour permettre à chaque utilisateur de trouver l'approche qui lui convient le mieux, afin d'améliorer la rétention d'information.
+
+- Centraliser les solutions d'apprentissage : Trackmates unifie en une seule plateforme les divers canaux de communication et outils de révision que les étudiants utilisent quotidiennement. Cela permet de simplifier l'accès aux ressources pédagogiques et de centraliser toutes les informations et interactions en un seul endroit.
+
+Grâce à l'IA, Trackmates propose également un système de recommandations personnalisées, offrant des conseils sur les meilleures stratégies d'apprentissage pour chaque utilisateur, maximisant ainsi l'efficacité de leurs révisions.
 
 ## Organisation
 Ce dépôt est organisé en plusieurs sous-dépôts :
@@ -59,21 +82,21 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
   Lancer le serveur : ```flask run```
 - Instancier un fichier ```.env``` à la racine contenant les attributs suivants : 
   - API_TOKEN= //doit être identique à FLASK_TOKEN
-###Bases de données :
-- Créer une base de données MySQL puis importer le fichier ```trackmates_db.sql``` à la récine du dépot
-- Créer une collection Interaction sur MongoDb 
+### Bases de données :
+- Créer une base de données MySQL puis importer le fichier ```trackmates_db.sql``` à la récine du dépot.
+- Créer une collection Interaction sur MongoDb.
 
 ## Utilisation
-Lancer le serveur Node, Le serveur Flask, le client React
-Le client tourne à l'adresse : ```http://localhost:3000```
-L'export de la bdd relationnel contient déjà un jeux de données avec : 
-utilisateur admin : 
-identifiant :
-mot de passe : Testtesttest1*
-utilisateur enseignant :
-identifiant :
-mot de passe : Testtesttest1*
-utilisateur étudiant : 
-identifiant : 
-mot de passe : Testtesttest1*
+- Lancer le serveur Node, Le serveur Flask, le client React
+- Le client tourne à l'adresse : ```http://localhost:3000```
+- L'export de la bdd relationnel contient déjà un jeu de données avec : 
+- utilisateur admin : 
+  - identifiant
+  - mot de passe : Testtesttest1*
+- utilisateur enseignant :
+  - identifiant :
+  - mot de passe : Testtesttest1*
+- utilisateur étudiant : 
+  - identifiant : 
+  - mot de passe : Testtesttest1*
 
