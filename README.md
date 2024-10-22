@@ -96,12 +96,12 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
 - Le client tourne à l'adresse : ```http://localhost:3000```
 - L'export de la bdd relationnel contient déjà un jeu de données avec : 
 - utilisateur admin : 
-  - identifiant
+  - identifiant : 20230902
   - mot de passe : Testtesttest1*
 - utilisateur enseignant :
-  - identifiant :
+  - identifiant : 90002
   - mot de passe : Testtesttest1*
 - utilisateur étudiant : 
-  - identifiant : 
+  - identifiant : 10171
   - mot de passe : Testtesttest1*
 
