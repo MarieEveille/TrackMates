@@ -10,6 +10,3 @@
 [submodule "dataset_generator"]
 	path = dataset_generator
 	url = https://github.com/thomasGarau/dataset_generator.git
-[submodule "serveur_flask"]
-	path = serveur_flask
-	url = https://github.com/thomasGarau/serveur_flask.git
