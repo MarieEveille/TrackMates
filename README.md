@@ -51,6 +51,11 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
 - Un compte MongoDb atlas 
 
 ## Installation
+
+### **récupération du projet** : 
+- ```git clone https://github.com/thomasGarau/TrackMates.git``` 
+- puis ```git submodule update --init --recursive```
+
 ### **Client**
 - Installer les dépendances : ```npm install```
 - Lancer le client : ```npm start```
