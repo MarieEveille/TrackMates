@@ -51,6 +51,11 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
 - Un compte MongoDb atlas 
 
 ## Installation
+
+### **récupération du projet** : 
+- ```git clone https://github.com/thomasGarau/TrackMates.git``` 
+- puis ```git submodule update --init --recursive```
+
 ### **Client**
 - Installer les dépendances : ```npm install```
 - Lancer le client : ```npm start```
@@ -87,9 +92,6 @@ Ce dépôt est organisé en plusieurs sous-dépôts :
 - Créer une collection Interaction sur MongoDb.
 
 ## Utilisation
-- récupérer le projet : ```git clone https://github.com/thomasGarau/TrackMates.git``` 
-puis ```git submodule update --init --recursive```
-
 - Lancer le serveur Node, Le serveur Flask, le client React
 - Le client tourne à l'adresse : ```http://localhost:3000```
 - L'export de la bdd relationnel contient déjà un jeu de données avec : 
