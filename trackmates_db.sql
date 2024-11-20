@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 22 oct. 2024 à 17:38
--- Version du serveur :  10.4.14-MariaDB
--- Version de PHP : 7.4.11
+-- Généré le : mer. 20 nov. 2024 à 16:25
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `track`
+-- Base de données : `trackmates_db`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `annotation` (
   `date` date NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
   `etat_annotation` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `annotation_cours` (
   `id_annotation_cours` int(10) NOT NULL,
   `id_annotation` int(10) NOT NULL,
   `id_cours` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `annotation_quizz` (
   `id_annotation_quizz` int(10) NOT NULL,
   `id_annotation` int(10) NOT NULL,
   `id_question` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE `avancement_cours` (
   `id_cours` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
   `etat_progression` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE `carte_mentale` (
   `titre` varchar(255) NOT NULL,
   `visibilite` varchar(255) NOT NULL,
   `id_chapitre` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ CREATE TABLE `chapitre` (
   `id_chapitre` int(10) NOT NULL,
   `label` varchar(255) NOT NULL,
   `id_ue` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `chapitre`
@@ -126,17 +126,6 @@ INSERT INTO `chapitre` (`id_chapitre`, `label`, `id_ue`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chapitre_chapitre`
---
-
-CREATE TABLE `chapitre_chapitre` (
-  `chapitre_id_chapitre` int(10) NOT NULL,
-  `chapitre_id_chapitre1` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `cours`
 --
 
@@ -146,7 +135,7 @@ CREATE TABLE `cours` (
   `id_chapitre` int(10) NOT NULL,
   `path` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `cours`
@@ -211,40 +200,13 @@ INSERT INTO `cours` (`id_cours`, `label`, `id_chapitre`, `path`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `element`
---
-
-CREATE TABLE `element` (
-  `id_element` int(10) NOT NULL,
-  `longueur` decimal(5,0) NOT NULL,
-  `largeur` decimal(5,0) NOT NULL,
-  `position_x` decimal(5,0) NOT NULL,
-  `position_y` decimal(5,0) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `id_carte_mentale` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `element_element`
---
-
-CREATE TABLE `element_element` (
-  `element_id_element` int(10) NOT NULL,
-  `element_id_element1` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `enseignants_ue`
 --
 
 CREATE TABLE `enseignants_ue` (
   `num_etudiant` varchar(255) NOT NULL,
   `id_ue` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `enseignants_ue`
@@ -341,6 +303,54 @@ INSERT INTO `enseignants_ue` (`num_etudiant`, `id_ue`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `flashcard`
+--
+
+CREATE TABLE `flashcard` (
+  `id_flashcard` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `reponse` varchar(255) NOT NULL,
+  `visibilite` varchar(255) NOT NULL,
+  `id_chapitre` int(11) DEFAULT NULL,
+  `id_utilisateur` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `flashcard`
+--
+
+INSERT INTO `flashcard` (`id_flashcard`, `question`, `reponse`, `visibilite`, `id_chapitre`, `id_utilisateur`) VALUES
+(5, 'quand Napoleon à t-il été sacrézaeeeeeeeeeeed', '2décembre 1804', 'public', 18, 5),
+(6, 'quand Napoleon à t-il été sacréaa', '2décembre 1804aa', 'public', 18, 5),
+(7, 'quand Napoleon à t-il été sacréassa', '2décembre 1804aqqa', 'orphelin', 18, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `flashcard_collection`
+--
+
+CREATE TABLE `flashcard_collection` (
+  `id_utilisateur` int(11) NOT NULL,
+  `id_flashcard` int(11) NOT NULL,
+  `date_ajout` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `flashcard_du_jour`
+--
+
+CREATE TABLE `flashcard_du_jour` (
+  `id_utilisateur` int(11) NOT NULL,
+  `id_flashcard` int(11) NOT NULL,
+  `date_flashcard_du_jour` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `formation`
 --
 
@@ -348,7 +358,7 @@ CREATE TABLE `formation` (
   `id_formation` int(10) NOT NULL,
   `label` varchar(255) NOT NULL,
   `id_universite` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `formation`
@@ -391,7 +401,7 @@ INSERT INTO `formation` (`id_formation`, `label`, `id_universite`) VALUES
 CREATE TABLE `formation_ue` (
   `formation_id_formation` int(10) NOT NULL,
   `ue_id_ue` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `formation_ue`
@@ -677,7 +687,7 @@ CREATE TABLE `forum` (
   `date` date NOT NULL,
   `etat` varchar(255) NOT NULL,
   `id_utilisateur` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `forum`
@@ -702,7 +712,7 @@ CREATE TABLE `forum_cours` (
   `id_forum_cours` int(10) NOT NULL,
   `id_forum` int(10) NOT NULL,
   `id_cours` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `forum_cours`
@@ -726,7 +736,7 @@ CREATE TABLE `forum_quizz` (
   `id_forum_cours` int(10) NOT NULL,
   `id_forum` int(10) NOT NULL,
   `id_quizz` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -741,7 +751,7 @@ CREATE TABLE `message` (
   `id_forum` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
   `heure` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `message`
@@ -774,7 +784,7 @@ CREATE TABLE `methode_des_j_chapitre` (
   `id_utilisateur` int(10) NOT NULL,
   `id_chapitre` int(10) NOT NULL,
   `ecart` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `methode_des_j_chapitre`
@@ -797,7 +807,7 @@ CREATE TABLE `note_du_quizz` (
   `note` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
   `id_quizz` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `note_du_quizz`
@@ -819,7 +829,7 @@ CREATE TABLE `note_quizz` (
   `note` int(10) NOT NULL,
   `id_quizz` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `note_quizz`
@@ -843,7 +853,7 @@ CREATE TABLE `promotion` (
   `num_etudiant` varchar(255) NOT NULL,
   `id_formation` int(10) NOT NULL,
   `annee` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `promotion`
@@ -1125,7 +1135,7 @@ CREATE TABLE `question` (
   `nombre_bonne_reponse` int(10) NOT NULL,
   `id_quizz` int(10) NOT NULL,
   `type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -1156,7 +1166,7 @@ CREATE TABLE `quizz` (
   `type` varchar(255) NOT NULL DEFAULT 'normal',
   `modifie` tinyint(1) NOT NULL DEFAULT 0,
   `visible` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `quizz`
@@ -1178,7 +1188,7 @@ CREATE TABLE `reponse` (
   `contenu` varchar(255) NOT NULL,
   `est_bonne_reponse` tinyint(1) NOT NULL,
   `id_question` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -1217,7 +1227,27 @@ CREATE TABLE `reponse_annotation` (
   `id_utilisateur` int(10) NOT NULL,
   `contenu` text NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse_flashcard`
+--
+
+CREATE TABLE `reponse_flashcard` (
+  `id_utilisateur` int(11) NOT NULL,
+  `id_flashcard` int(11) NOT NULL,
+  `date_reponse` timestamp NOT NULL DEFAULT current_timestamp(),
+  `etat_reponse` enum('juste','faux') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `reponse_flashcard`
+--
+
+INSERT INTO `reponse_flashcard` (`id_utilisateur`, `id_flashcard`, `date_reponse`, `etat_reponse`) VALUES
+(5, 5, '2024-11-20 13:36:11', 'juste');
 
 -- --------------------------------------------------------
 
@@ -1229,7 +1259,7 @@ CREATE TABLE `reponse_utilisateur` (
   `id_reponse` int(10) NOT NULL,
   `id_utilisateur` int(10) NOT NULL,
   `id_note_quizz` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `reponse_utilisateur`
@@ -1265,7 +1295,7 @@ CREATE TABLE `token_liste_noire` (
   `id_token` int(10) NOT NULL,
   `token` varchar(1000) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `token_liste_noire`
@@ -1322,7 +1352,7 @@ CREATE TABLE `ue` (
   `id_ue` int(10) NOT NULL,
   `label` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `ue`
@@ -1425,7 +1455,7 @@ INSERT INTO `ue` (`id_ue`, `label`, `path`) VALUES
 CREATE TABLE `universite` (
   `id_universite` int(10) NOT NULL,
   `label` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `universite`
@@ -1447,7 +1477,7 @@ CREATE TABLE `utilisateur` (
   `num_etudiant` varchar(255) NOT NULL,
   `url` text DEFAULT NULL,
   `consentement` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -1466,18 +1496,6 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `mdp`, `num_etudiant`, `url`, `cons
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur_carte_mentale`
---
-
-CREATE TABLE `utilisateur_carte_mentale` (
-  `id_utilisateur` int(10) NOT NULL,
-  `id_carte_mentale` int(10) NOT NULL,
-  `privilege` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `utilisateur_valide`
 --
 
@@ -1489,7 +1507,7 @@ CREATE TABLE `utilisateur_valide` (
   `role` varchar(255) NOT NULL,
   `id_universite` int(10) NOT NULL,
   `date_naissance` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `utilisateur_valide`
@@ -1811,6 +1829,19 @@ INSERT INTO `utilisateur_valide` (`num_etudiant`, `nom`, `prenom`, `mail_utilisa
 ('91024', 'King', 'Harry', 'h.king@school.edu', 'enseignant', 1, NULL),
 ('91025', 'Scott', 'George', 'g.scott@school.edu', 'enseignant', 1, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `verification_codes`
+--
+
+CREATE TABLE `verification_codes` (
+  `num_etudiant` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `date_expiration` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Index pour les tables déchargées
 --
@@ -1861,13 +1892,6 @@ ALTER TABLE `chapitre`
   ADD KEY `id_ue` (`id_ue`);
 
 --
--- Index pour la table `chapitre_chapitre`
---
-ALTER TABLE `chapitre_chapitre`
-  ADD KEY `chapitre_id_chapitre` (`chapitre_id_chapitre`),
-  ADD KEY `chapitre_id_chapitre1` (`chapitre_id_chapitre1`);
-
---
 -- Index pour la table `cours`
 --
 ALTER TABLE `cours`
@@ -1875,25 +1899,33 @@ ALTER TABLE `cours`
   ADD KEY `id_chapitre` (`id_chapitre`);
 
 --
--- Index pour la table `element`
---
-ALTER TABLE `element`
-  ADD PRIMARY KEY (`id_element`),
-  ADD KEY `id_carte_mentale` (`id_carte_mentale`);
-
---
--- Index pour la table `element_element`
---
-ALTER TABLE `element_element`
-  ADD PRIMARY KEY (`element_id_element`,`element_id_element1`),
-  ADD KEY `element_id_element1` (`element_id_element1`);
-
---
 -- Index pour la table `enseignants_ue`
 --
 ALTER TABLE `enseignants_ue`
   ADD PRIMARY KEY (`num_etudiant`,`id_ue`),
   ADD KEY `enseignants_ue_ibfk_2` (`id_ue`);
+
+--
+-- Index pour la table `flashcard`
+--
+ALTER TABLE `flashcard`
+  ADD PRIMARY KEY (`id_flashcard`),
+  ADD KEY `fk_chapitre` (`id_chapitre`),
+  ADD KEY `fk_flashcard_utilisateur` (`id_utilisateur`);
+
+--
+-- Index pour la table `flashcard_collection`
+--
+ALTER TABLE `flashcard_collection`
+  ADD PRIMARY KEY (`id_utilisateur`,`id_flashcard`),
+  ADD KEY `id_flashcard` (`id_flashcard`);
+
+--
+-- Index pour la table `flashcard_du_jour`
+--
+ALTER TABLE `flashcard_du_jour`
+  ADD PRIMARY KEY (`id_utilisateur`,`date_flashcard_du_jour`),
+  ADD KEY `id_flashcard` (`id_flashcard`);
 
 --
 -- Index pour la table `formation`
@@ -2004,6 +2036,13 @@ ALTER TABLE `reponse_annotation`
   ADD KEY `id_utilisateur` (`id_utilisateur`);
 
 --
+-- Index pour la table `reponse_flashcard`
+--
+ALTER TABLE `reponse_flashcard`
+  ADD PRIMARY KEY (`id_utilisateur`,`id_flashcard`,`date_reponse`),
+  ADD KEY `id_flashcard` (`id_flashcard`);
+
+--
 -- Index pour la table `reponse_utilisateur`
 --
 ALTER TABLE `reponse_utilisateur`
@@ -2037,19 +2076,18 @@ ALTER TABLE `utilisateur`
   ADD KEY `utilisateur_ibfk_1` (`num_etudiant`);
 
 --
--- Index pour la table `utilisateur_carte_mentale`
---
-ALTER TABLE `utilisateur_carte_mentale`
-  ADD PRIMARY KEY (`id_utilisateur`,`id_carte_mentale`),
-  ADD KEY `id_carte_mentale` (`id_carte_mentale`);
-
---
 -- Index pour la table `utilisateur_valide`
 --
 ALTER TABLE `utilisateur_valide`
   ADD PRIMARY KEY (`num_etudiant`),
   ADD UNIQUE KEY `mail_utilisateur` (`mail_utilisateur`),
   ADD KEY `id_universite` (`id_universite`);
+
+--
+-- Index pour la table `verification_codes`
+--
+ALTER TABLE `verification_codes`
+  ADD PRIMARY KEY (`num_etudiant`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -2092,10 +2130,10 @@ ALTER TABLE `cours`
   MODIFY `id_cours` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- AUTO_INCREMENT pour la table `element`
+-- AUTO_INCREMENT pour la table `flashcard`
 --
-ALTER TABLE `element`
-  MODIFY `id_element` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `flashcard`
+  MODIFY `id_flashcard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `formation`
@@ -2237,30 +2275,10 @@ ALTER TABLE `chapitre`
   ADD CONSTRAINT `chapitre_ibfk_1` FOREIGN KEY (`id_ue`) REFERENCES `ue` (`id_ue`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `chapitre_chapitre`
---
-ALTER TABLE `chapitre_chapitre`
-  ADD CONSTRAINT `chapitre_chapitre_ibfk_1` FOREIGN KEY (`chapitre_id_chapitre`) REFERENCES `chapitre` (`id_chapitre`) ON DELETE CASCADE,
-  ADD CONSTRAINT `chapitre_chapitre_ibfk_2` FOREIGN KEY (`chapitre_id_chapitre1`) REFERENCES `chapitre` (`id_chapitre`) ON DELETE CASCADE;
-
---
 -- Contraintes pour la table `cours`
 --
 ALTER TABLE `cours`
   ADD CONSTRAINT `cours_ibfk_1` FOREIGN KEY (`id_chapitre`) REFERENCES `chapitre` (`id_chapitre`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `element`
---
-ALTER TABLE `element`
-  ADD CONSTRAINT `element_ibfk_1` FOREIGN KEY (`id_carte_mentale`) REFERENCES `carte_mentale` (`id_carte_mentale`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `element_element`
---
-ALTER TABLE `element_element`
-  ADD CONSTRAINT `element_element_ibfk_1` FOREIGN KEY (`element_id_element`) REFERENCES `element` (`id_element`) ON DELETE CASCADE,
-  ADD CONSTRAINT `element_element_ibfk_2` FOREIGN KEY (`element_id_element1`) REFERENCES `element` (`id_element`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `enseignants_ue`
@@ -2268,6 +2286,27 @@ ALTER TABLE `element_element`
 ALTER TABLE `enseignants_ue`
   ADD CONSTRAINT `enseignants_ue_ibfk_1` FOREIGN KEY (`num_etudiant`) REFERENCES `utilisateur_valide` (`num_etudiant`) ON DELETE CASCADE,
   ADD CONSTRAINT `enseignants_ue_ibfk_2` FOREIGN KEY (`id_ue`) REFERENCES `ue` (`id_ue`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `flashcard`
+--
+ALTER TABLE `flashcard`
+  ADD CONSTRAINT `fk_chapitre` FOREIGN KEY (`id_chapitre`) REFERENCES `chapitre` (`id_chapitre`),
+  ADD CONSTRAINT `fk_flashcard_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
+
+--
+-- Contraintes pour la table `flashcard_collection`
+--
+ALTER TABLE `flashcard_collection`
+  ADD CONSTRAINT `flashcard_collection_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
+  ADD CONSTRAINT `flashcard_collection_ibfk_2` FOREIGN KEY (`id_flashcard`) REFERENCES `flashcard` (`id_flashcard`);
+
+--
+-- Contraintes pour la table `flashcard_du_jour`
+--
+ALTER TABLE `flashcard_du_jour`
+  ADD CONSTRAINT `flashcard_du_jour_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
+  ADD CONSTRAINT `flashcard_du_jour_ibfk_2` FOREIGN KEY (`id_flashcard`) REFERENCES `flashcard` (`id_flashcard`);
 
 --
 -- Contraintes pour la table `formation`
@@ -2363,6 +2402,13 @@ ALTER TABLE `reponse_annotation`
   ADD CONSTRAINT `reponse_annotation_ibfk_2` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE;
 
 --
+-- Contraintes pour la table `reponse_flashcard`
+--
+ALTER TABLE `reponse_flashcard`
+  ADD CONSTRAINT `reponse_flashcard_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
+  ADD CONSTRAINT `reponse_flashcard_ibfk_2` FOREIGN KEY (`id_flashcard`) REFERENCES `flashcard` (`id_flashcard`);
+
+--
 -- Contraintes pour la table `reponse_utilisateur`
 --
 ALTER TABLE `reponse_utilisateur`
@@ -2375,13 +2421,6 @@ ALTER TABLE `reponse_utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`num_etudiant`) REFERENCES `utilisateur_valide` (`num_etudiant`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `utilisateur_carte_mentale`
---
-ALTER TABLE `utilisateur_carte_mentale`
-  ADD CONSTRAINT `utilisateur_carte_mentale_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE,
-  ADD CONSTRAINT `utilisateur_carte_mentale_ibfk_2` FOREIGN KEY (`id_carte_mentale`) REFERENCES `carte_mentale` (`id_carte_mentale`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `utilisateur_valide`
